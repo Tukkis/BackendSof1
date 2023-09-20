@@ -3,6 +3,7 @@
 <head>
 	<title>Booklist</title>
 	<meta http-equiv="Content-Type" charset="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<table class="table table-striped">
@@ -17,7 +18,8 @@
 			<td th:text="${book.title}"></td>
 			<td th:text="${book.isbn}"></td>
 			<td th:text="${book.published}"></td>
-			<td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+			<td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+			<td><a th:href="@{/edit/{id}(id=${book.id})}">Edit Book</a></td>
 		</tr>
 		<div><a href="/add" class="btn btn-primary">Add Book</a></div>
 	</table>
