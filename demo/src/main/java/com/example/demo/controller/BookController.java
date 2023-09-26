@@ -33,6 +33,7 @@ public class BookController {
 		model.addAttribute("book", new Book());
 		return "addbook";
 	}
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveBook(Book book){
 		repository.save(book);
