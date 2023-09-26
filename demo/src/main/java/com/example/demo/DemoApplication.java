@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.demo.domain.Book;
 import com.example.demo.domain.BookRepository;
+import com.example.demo.domain.Category;
+import com.example.demo.domain.CategoryRepository;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -16,11 +18,22 @@ public class DemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository repository) {
+	public CommandLineRunner categorycl(CategoryRepository repository) {
 		return (args) -> {
-			Book b = new Book("Petteri Perä", "Hello World", 1999, "894098-5432", 9);
+			Category a = new Category("scifi");
+			Category b = new Category("comic");
 			
+			repository.save(a);
 			repository.save(b);
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner bookcl(BookRepository repository) {
+		return (args) -> {
+			Book a = new Book("Petteri Perä", "Hello World", 1999, "894098-5432", 9);
+			
+			repository.save(a);
 		};
 	}
 }
