@@ -16,6 +16,12 @@
 			<input type="text" id="isbn" th:field="*{isbn}" />
 			<label for="published">Year</label>
 			<input type="number" id="published" th:field="*{published}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+				<label for="clist">Category</label>
+				<select id="clist" th:field="*{category}" class="from-control">
+					<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+				</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" value="Save"></input>
 		</form>
 	</div>

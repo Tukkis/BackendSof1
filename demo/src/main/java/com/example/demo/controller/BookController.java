@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Book;
 import com.example.demo.domain.BookRepository;
+import com.example.demo.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 	@Autowired
 	private BookRepository repository;
+	
+	@Autowired
+	private CategoryRepository crepository;
 	
 	@RequestMapping("/index")
 	public String hello(@RequestParam(value="name")String name, Model model) {
@@ -31,6 +35,7 @@ public class BookController {
 	@RequestMapping(value = "/add")
 	public String addBook(Model model){
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
 	

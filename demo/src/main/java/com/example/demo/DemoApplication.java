@@ -18,22 +18,17 @@ public class DemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner categorycl(CategoryRepository repository) {
+	public CommandLineRunner categorycl(CategoryRepository crepository, BookRepository brepository) {
 		return (args) -> {
-			Category a = new Category("scifi");
-			Category b = new Category("comic");
+			Category a1 = new Category("scifi");
+			Category b1 = new Category("comic");
 			
-			repository.save(a);
-			repository.save(b);
-		};
-	}
-	
-	@Bean
-	public CommandLineRunner bookcl(BookRepository repository) {
-		return (args) -> {
-			Book a = new Book("Petteri Perä", "Hello World", 1999, "894098-5432", 9);
+			crepository.save(a1);
+			crepository.save(b1);
+
+			Book b2 = new Book("Petteri Perä", "Hello World", 1999, "894098-5432", 9, crepository.findByName("comic").get(0));
 			
-			repository.save(a);
+			brepository.save(b2);
 		};
 	}
 }
